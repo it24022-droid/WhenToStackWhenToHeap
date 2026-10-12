@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+class Employee {
+    double salary;
+
+    public Employee(double salary) {
+        this.salary = salary;
+    }
+
+    public void display() {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter bonus: ");
+        double bonus = scanner.nextDouble();
+
+        System.out.println("Employee Object Created");
+        System.out.println("Employee Identity Hash Code: " + System.identityHashCode(this));
+        System.out.println();
+        System.out.println("Inside display() Method:");
+        System.out.println("Salary (Instance Variable): " + (int)salary);
+        System.out.println("Bonus (Local Variable): " + (int)bonus);
+        System.out.println();
+        class Report {
+            public void show() {
+                System.out.println("Report Object Created");
+                System.out.println("Report Identity Hash Code: " + System.identityHashCode(this));
+                System.out.println("Report: Employee salary is " + (int)salary);
+                System.out.println();
+            }
+        }
+
+        Report report = new Report();
+        report.show();
+
+        System.out.println("Memory Concept:");
+        System.out.println("Employee object -> Heap");
+        System.out.println("Report object -> Heap");
+        System.out.println("salary -> Instance field");
+        System.out.println("bonus -> Local variable in display()");
+        System.out.println("show() -> Executes in its own method frame");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter salary: ");
+        double salary = scanner.nextDouble();
+
+        Employee emp = new Employee(salary);
+        emp.display();
+    }
+}
